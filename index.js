@@ -2,7 +2,13 @@ var express = require('express');
 var app = express();
 const nodemailer = require('nodemailer');
 require("dotenv").config();
+const cors = require("cors");
 const bodyParser = require('body-parser');
+
+
+app.use(cors({
+   origin : "*"
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
