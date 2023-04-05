@@ -1,6 +1,11 @@
 var express = require('express');
 var app = express();
 const nodemailer = require('nodemailer');
+require("dotenv").config();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
    res.send('Hello World');
@@ -9,12 +14,12 @@ app.get('/', function (req, res) {
 
 
 app.post('/mail', async (req , res)=>{
-   console.log(req.body)
+   console.log(req.body.name)
   var transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
           user: 'umerprogrammer@gmail.com',
-          pass: 'kfbwoukjnvdulnek'
+          pass: process.env.Pass
       }
   });
   
@@ -22,8 +27,8 @@ app.post('/mail', async (req , res)=>{
   transporter.sendMail({
   from: 'umerprogrammer@gmail.com',
     to: 'umerprogrammer@gmail.com',
-    subject: 'hello world!',
-    text: 'hello world!'
+    subject: 'customer info',
+    text: `Here is the phone number:${req.body.phone} and here is Name: ${req.body.name}`
   });
 
 })
