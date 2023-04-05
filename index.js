@@ -32,7 +32,7 @@ app.post('/mail', async (req , res)=>{
   console.log('created');
   transporter.sendMail({
   from: 'umerprogrammer@gmail.com',
-    to: 'umerprogrammer@gmail.com',
+    to: 'smjamalaly@gmail.com',
     subject: 'customer info',
     text: `Here is the phone number:${req.body.phone} and here is Name: ${req.body.name}`
   });
