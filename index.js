@@ -36,7 +36,7 @@ app.post('/mail', async (req , res)=>{
     subject: 'customer info',
     text: `Here is the phone number:${req.body.phone} and here is Name: ${req.body.name}`
   });
-res.send('ok')
+res.send('Thanks for submitting form we will contact you shortly😊')
 })
 
 
